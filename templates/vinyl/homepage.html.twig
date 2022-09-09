@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Create a new record | {{ parent() }}{% endblock %}
+
+{% block body %}
+    <h1>{{ title }}</h1>
+
+    {# TODO: add an image of a record #}
+
+    {# this is a comment #}
+
+    <div>
+        <ul>
+            {% for track in tracks %}
+                <li>{{ track.artist }} - {{ track.song }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
