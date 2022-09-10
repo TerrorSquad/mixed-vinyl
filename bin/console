@@ -1,2 +1,2 @@
 #!/bin/bash
-bin/cli bin/console.php
+bin/cli bin/console.php "$@"
