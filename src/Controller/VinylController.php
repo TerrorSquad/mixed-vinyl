@@ -15,7 +15,7 @@ class VinylController extends AbstractController
     public function homepage(): Response
     {
         $tracks = [
-            ['song' => 'Gangsta\'s paradise', 'artist' => 'Coolio'],
+            ['song' => 'Gangsta\'s Paradise', 'artist' => 'Coolio'],
             ['song' => 'Waterfalls', 'artist' => 'TLC'],
             ['song' => 'Creep', 'artist' => 'Radiohead'],
             ['song' => 'Kiss from a Rose', 'artist' => 'Seal'],
@@ -24,8 +24,8 @@ class VinylController extends AbstractController
         ];
 
         return $this->render('vinyl/homepage.html.twig', [
-            'title' => 'PB and Jams',
-            'tracks' => $tracks
+            'title' => 'PB & Jams',
+            'tracks' => $tracks,
         ]);
     }
 
@@ -33,8 +33,36 @@ class VinylController extends AbstractController
     public function browse(string $slug = null): Response
     {
         $genre = $slug ? u(str_replace('-', ' ', $slug))->title(true) : null;
+        $mixes = $this->getMixes();
+
         return $this->render('vinyl/browse.html.twig', [
-            'genre' => $genre
+            'genre' => $genre,
+            'mixes' => $mixes,
         ]);
+    }
+
+    private function getMixes(): array
+    {
+        // temporary fake "mixes" data
+        return [
+            [
+                'title' => 'PB & Jams',
+                'trackCount' => 14,
+                'genre' => 'Rock',
+                'createdAt' => new \DateTime('2021-10-02'),
+            ],
+            [
+                'title' => 'Put a Hex on your Ex',
+                'trackCount' => 8,
+                'genre' => 'Heavy Metal',
+                'createdAt' => new \DateTime('2022-04-28'),
+            ],
+            [
+                'title' => 'Spice Grills - Summer Tunes',
+                'trackCount' => 10,
+                'genre' => 'Pop',
+                'createdAt' => new \DateTime('2019-06-20'),
+            ],
+        ];
     }
 }
