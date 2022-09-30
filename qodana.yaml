@@ -1,0 +1,15 @@
+version: "1.0"
+linter: jetbrains/qodana-php:2022.2-eap
+exclude:
+  - name: All
+    paths:
+      - assets
+      - bin
+      - cache
+      - docker
+      - docs
+      - node_modules
+      - public
+      - translations
+      - var
+      - vendor
