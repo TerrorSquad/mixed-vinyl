@@ -4,9 +4,9 @@
 use App\Kernel;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 
-$_SERVER['APP_RUNTIME_OPTIONS'] = [
-    'dotenv_overload' => true,
-];
+//$_SERVER['APP_RUNTIME_OPTIONS'] = [
+//    'dotenv_overload' => true,
+//];
 
 if (!is_file(dirname(__DIR__) . '/vendor/autoload_runtime.php')) {
     throw new LogicException('Symfony Runtime is missing. Try running "composer require symfony/runtime".');
