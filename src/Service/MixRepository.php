@@ -35,7 +35,10 @@ class MixRepository
 
         return $this->cache->get('mises_data', function (CacheItemInterface $cacheItem) {
             $cacheItem->expiresAfter($this->isDebug ? 5 : 60);
-            return $this->githubContentClient->request('GET', '/SymfonyCasts/vinyl-mixes/main/mixes.json')->toArray();
+            return $this->githubContentClient->request(
+                'GET',
+                '/SymfonyCasts/vinyl-mixes/main/mixes.json'
+            )->toArray();
         });
     }
 }
