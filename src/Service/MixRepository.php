@@ -15,7 +15,8 @@ class MixRepository
 
     public function __construct(
         private HttpClientInterface $httpClient,
-        private CacheInterface      $cache
+        private CacheInterface      $cache,
+        private bool                $isDebug
     )
     {
     }
@@ -26,7 +27,7 @@ class MixRepository
     public function findAll(): array
     {
         return $this->cache->get('mises_data', function (CacheItemInterface $cacheItem) {
-            $cacheItem->expiresAfter(5);
+            $cacheItem->expiresAfter($this->isDebug ? 5 : 60);
             return $this->httpClient->request('GET', self::URL)->toArray();
         });
     }
