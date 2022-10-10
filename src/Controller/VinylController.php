@@ -46,7 +46,7 @@ class VinylController extends AbstractController
 
         return $this->render('vinyl/browse.html.twig', [
             'genre' => $genre,
-            'mixes' => $this->mixRepository->findBy([], ['votes' => 'desc']),
+            'mixes' => $this->mixRepository->findAllOrderedByVotes($slug),
         ]);
     }
 }
