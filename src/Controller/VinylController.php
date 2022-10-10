@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\Entity\VinylMix;
 use App\Repository\VinylMixRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -47,6 +48,14 @@ class VinylController extends AbstractController
         return $this->render('vinyl/browse.html.twig', [
             'genre' => $genre,
             'mixes' => $this->mixRepository->findAllOrderedByVotes($slug),
+        ]);
+    }
+
+    #[Route('/mix/{id}', name: 'app_mix')]
+    public function show(VinylMix $mix): Response
+    {
+        return $this->render('mix/show.html.twig', [
+            'mix' => $mix,
         ]);
     }
 }
